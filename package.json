@@ -1,0 +1,22 @@
+{
+  "name": "monorepo-boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ben Awad <benawad97@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/inquirer": "^0.0.43",
+    "@types/ncp": "^2.0.1",
+    "@types/node": "^10.12.11",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.1"
+  },
+  "dependencies": {
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.1",
+    "ncp": "^2.0.0"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  }
+}
