@@ -65,15 +65,17 @@ inquirer
       extraChoices,
       projectName
     }: any) => {
-      const destination = `${CURR_DIR}/${projectName}`;
+      const rootDest = `${CURR_DIR}/${projectName}`;
+      fs.mkdirSync(rootDest);
 
+      await copy(`${TEMPLATE_FOLDER}/root`, rootDest);
+
+      const destination = `${rootDest}/packages`;
       fs.mkdirSync(destination);
 
       const serverDestination = `${destination}/server`;
-      const webDestination = `${destination}/server`;
+      const webDestination = `${destination}/web`;
 
-      // fs.mkdirSync(serverDestination);
-      // fs.mkdirSync(webDestination);
       await copy(
         `${TEMPLATE_FOLDER}/frontend/${frontendChoice}`,
         webDestination
@@ -84,8 +86,7 @@ inquirer
       );
       await Promise.all(
         extraChoices.map((extra: keyof typeof extraNameMapping) => {
-          const dest = `${destination}/${extraNameMapping[extra]}`;
-          // fs.mkdirSync(dest);
+          const dest = `${destination}/${extraNameMapping[extra] || extra}`;
           return copy(`${TEMPLATE_FOLDER}/extras/${extra}`, dest);
         })
       );

@@ -1,0 +1,35 @@
+[
+  {
+    "name": "development",
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "postgres",
+    "database": "example",
+    "synchronize": true,
+    "logging": false,
+    "entities": ["src/entity/**/*.*"],
+    "migrations": ["src/migration/**/*.*"],
+    "subscribers": ["src/subscriber/**/*.*"],
+    "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "src/migration",
+      "subscribersDir": "src/subscriber"
+    }
+  },
+  {
+    "name": "production",
+    "type": "postgres",
+    "host": "db",
+    "port": 5432,
+    "username": "postgres",
+    "password": "postgres",
+    "database": "codeponder",
+    "synchronize": false,
+    "logging": false,
+    "entities": ["dist/entity/**/*.*"],
+    "migrations": ["dist/migration/**/*.*"],
+    "subscribers": ["dist/subscriber/**/*.*"]
+  }
+]
